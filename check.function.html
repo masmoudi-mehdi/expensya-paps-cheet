@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function check(data) {
+           const header = ["LastName","FirstName","Language","PayId","PayId2","Other","PayId3"]
+           foundData = []
+           notFoundData = []
+           newData = []
+           for (let i = 0; i < data.length; i++) {
+               if(header.includes(data[i])){
+                   foundData.push(data[i])
+               }
+
+               else{
+                   notFoundData.push(data[i])
+               }
+           }
+           alert('I found this data : [' + foundData + ']')
+           alert('I did not found this data : [' + notFoundData + ']')
+
+           newData = foundData.slice();
+
+           for (let i = 0; i < notFoundData.length; i++) {
+               checkThis = prompt('What do you mean by this value :' + notFoundData[i] + 
+                                    '\n here are the possible choices : ' + header)
+               if (header.includes(checkThis)) {
+                   newData.push(checkThis)
+                   alert('great i found this one, The new array of found data : [' + newData + ']')
+               }
+               else{
+                   do {
+                       checkThis = prompt('Sorry I did not found this one either :' + checkThis)
+                   } while (!header.includes(checkThis));
+
+                   newData.push(checkThis)
+                   alert('great i found this one, The new array of founded data : [' + newData + ']')
+               }
+               
+           }
+        }
+
+        check(["LastName","FirstName","Language","PayId","PayId2"])
+        check(["azerazer","azerazer","aezrazer","azerazerazer","azereazrazer"])
+
+    </script>
+</body>
+</html>
